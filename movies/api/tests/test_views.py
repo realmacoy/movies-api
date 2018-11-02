@@ -3,7 +3,8 @@
 from django.shortcuts import reverse
 from rest_framework.test import APITestCase
 
-from api.models import Movie
+from ..models import Movie
+
 
 class TestNoteApi(APITestCase):
     def setUp(self):
@@ -12,7 +13,7 @@ class TestNoteApi(APITestCase):
         self.movie.save()
 
     def test_movie_creation(self):
-        response = self.client.post(reverse('movies'), {
+        response = self.client.post(reverse('movies.api:movies'), {
             'name': 'Bee Movie',
             'year_of_release': 2007
         })
@@ -24,11 +25,11 @@ class TestNoteApi(APITestCase):
         self.assertEqual(201, response.status_code)
 
     def test_getting_movies(self):
-        response = self.client.get(reverse('movies'), format='json')
+        response = self.client.get(reverse('movies.api:movies'), format='json')
         self.assertEqual(len(response.data), 1)
 
     def test_updating_movie(self):
-        response = self.client.put(reverse('detail', kwargs= {'pk': 1}), {
+        response = self.client.put(reverse('movies.api:detail', kwargs={'pk': 1}), {
             'name': 'The Space Between Us updated',
             'year_of_release': 2017
         }, format='json')
@@ -37,5 +38,5 @@ class TestNoteApi(APITestCase):
         self.assertEqual('The Space Between Us updated', response.data['name'])
 
     def test_deleting_movie(self):
-        response = self.client.delete(reverse('detail', kwargs={'pk': 1}))
+        response = self.client.delete(reverse('movies.api:detail', kwargs={'pk': 1}))
         self.assertEqual(204, response.status_code)

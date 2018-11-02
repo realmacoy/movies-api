@@ -1,7 +1,8 @@
 # movies-api/movies/api/tests/test_models.py
 
 from django.test import TestCase
-from api.models import Movie
+from ..models import Movie
+
 
 class TestMovieModel(TestCase):
     def setUp(self):
