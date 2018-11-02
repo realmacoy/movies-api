@@ -25,7 +25,7 @@ SECRET_KEY = '_-%)nn2&ncuzcy#_js^=d8by$6bh=j@05=h_+a%*l+=q(nxltg'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['robco-movies-api-staging.herokuapp.com', 'robco-movies-api-production.herokuapp.com']
 
 
 # Application definition
