@@ -1,4 +1,4 @@
 Django==3.2.24
 djangorestframework>=3.9.1
-gunicorn==19.9.0
+gunicorn==22.0.0
 pytz==2018.7
